@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: admins
+# Table name: order_items
 #
 #  id              :integer          not null, primary key
-#  username        :string           default(""), not null
-#  password_digset :string           default(""), not null
-#  access_token    :string           default(""), not null
+#  order_id        :integer
+#  product_spec_id :integer
+#  quantity        :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 FactoryBot.define do
-  factory :admin do
+  factory :order_item do
     
   end
 end

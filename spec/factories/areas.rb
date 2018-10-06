@@ -1,15 +1,19 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: areas
 #
 #  id         :integer          not null, primary key
-#  nicknamem  :string           default(""), not null
+#  parent_id  :integer
+#  category   :string
+#  name       :string
+#  pinyin     :string
+#  area_code  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryBot.define do
-  factory :user do
+  factory :area do
     
   end
 end

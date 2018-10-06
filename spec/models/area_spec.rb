@@ -1,16 +1,19 @@
 # == Schema Information
 #
-# Table name: product_images
+# Table name: areas
 #
 #  id         :integer          not null, primary key
-#  product_id :integer
-#  image_url  :string           default(""), not null
+#  parent_id  :integer
+#  category   :string
+#  name       :string
+#  pinyin     :string
+#  area_code  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
-RSpec.describe ProductImage, type: :model do
+RSpec.describe Area, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

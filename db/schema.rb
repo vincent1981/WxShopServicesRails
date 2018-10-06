@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_131006) do
+ActiveRecord::Schema.define(version: 2018_10_06_135516) do
 
   create_table "admins", force: :cascade do |t|
+    t.string "username", default: "", null: false
+    t.string "password_digset", default: "", null: false
+    t.string "access_token", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_admins_on_access_token", unique: true
+    t.index ["username"], name: "index_admins_on_username", unique: true
+  end
+
+  create_table "areas", force: :cascade do |t|
+    t.integer "parent_id"
+    t.string "category"
+    t.string "name"
+    t.string "pinyin"
+    t.string "area_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_code"], name: "index_areas_on_area_code"
+    t.index ["category"], name: "index_areas_on_category"
+    t.index ["name"], name: "index_areas_on_name"
+    t.index ["parent_id"], name: "index_areas_on_parent_id"
+    t.index ["pinyin"], name: "index_areas_on_pinyin"
   end
 
   create_table "banners", force: :cascade do |t|
@@ -42,7 +64,22 @@ ActiveRecord::Schema.define(version: 2018_09_05_131006) do
     t.index ["product_id"], name: "index_category_products_on_product_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_spec_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_spec_id"], name: "index_order_items_on_product_spec_id"
+  end
+
   create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "count_money", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "product_images", force: :cascade do |t|
@@ -77,6 +114,38 @@ ActiveRecord::Schema.define(version: 2018_09_05_131006) do
   end
 
   create_table "shopping_carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_spec_id"
+    t.integer "user_receiving_address_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_spec_id"], name: "index_shopping_carts_on_product_spec_id"
+    t.index ["quantity"], name: "index_shopping_carts_on_quantity"
+    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
+    t.index ["user_receiving_address_id"], name: "index_shopping_carts_on_user_receiving_address_id"
+  end
+
+  create_table "user_receiving_addresses", force: :cascade do |t|
+    t.integer "use_id"
+    t.integer "province_id"
+    t.integer "city_id"
+    t.integer "district_id"
+    t.string "recipients", null: false
+    t.string "phone_number", null: false
+    t.string "address", null: false
+    t.string "postal_code", null: false
+    t.boolean "acquiescent", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_user_receiving_addresses_on_address"
+    t.index ["city_id"], name: "index_user_receiving_addresses_on_city_id"
+    t.index ["district_id"], name: "index_user_receiving_addresses_on_district_id"
+    t.index ["phone_number"], name: "index_user_receiving_addresses_on_phone_number"
+    t.index ["postal_code"], name: "index_user_receiving_addresses_on_postal_code"
+    t.index ["province_id"], name: "index_user_receiving_addresses_on_province_id"
+    t.index ["recipients"], name: "index_user_receiving_addresses_on_recipients"
+    t.index ["use_id"], name: "index_user_receiving_addresses_on_use_id"
   end
 
   create_table "users", force: :cascade do |t|
