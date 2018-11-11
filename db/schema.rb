@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_135516) do
     t.integer "product_id"
     t.string "title", default: "", null: false
     t.string "picture_url", null: false
+    t.boolean "is_display", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_url"], name: "index_banners_on_picture_url"
@@ -118,14 +119,12 @@ ActiveRecord::Schema.define(version: 2018_10_06_135516) do
   create_table "shopping_carts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_spec_id"
-    t.integer "user_receiving_address_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_spec_id"], name: "index_shopping_carts_on_product_spec_id"
     t.index ["quantity"], name: "index_shopping_carts_on_quantity"
     t.index ["user_id"], name: "index_shopping_carts_on_user_id"
-    t.index ["user_receiving_address_id"], name: "index_shopping_carts_on_user_receiving_address_id"
   end
 
   create_table "user_receiving_addresses", force: :cascade do |t|

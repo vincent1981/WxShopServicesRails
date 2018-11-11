@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :wxprogram do
+    resources :home, :only => [] do
+      collection do
+        get :home_info
+      end
+    end
+  end
 end

@@ -6,6 +6,7 @@
 #  product_id  :integer
 #  title       :string           default(""), not null
 #  picture_url :string           not null
+#  is_display  :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

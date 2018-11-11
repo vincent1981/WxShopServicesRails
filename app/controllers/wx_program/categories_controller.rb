@@ -1,2 +1,2 @@
-class WxProgram::CategoriesController < ApplicationController
+class WxProgram::CategoriesController < WxProgram::BaseController
 end
