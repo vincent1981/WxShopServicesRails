@@ -12,4 +12,11 @@
 #
 
 class Product < ApplicationRecord
+  has_many :product_images, dependent: :destroy
+  accepts_nested_attributes_for :product_images, allow_destroy: true
+
+  has_many :product_specs, dependent: :destroy
+  accepts_nested_attributes_for :product_specs, allow_destroy: true
+
+  has_one :category_product
 end

@@ -1,0 +1,2 @@
+module WxProgram::ProductSpecHelper
+end
