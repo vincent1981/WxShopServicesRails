@@ -27,6 +27,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'debase'
   gem 'annotate'
+  gem 'awesome_print'
 end
 
 group :development do

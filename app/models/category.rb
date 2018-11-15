@@ -17,4 +17,14 @@ class Category < ApplicationRecord
   has_many :category_products, dependent: :destroy
 
   has_many :products, through: :category_products
+
+  def self.get_products_by_id!(category_id)
+    category = Category.find_by(:id => category_id)
+    
+    if category.blank?
+      
+    end
+    
+    category.products
+  end
 end

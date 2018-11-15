@@ -9,6 +9,6 @@
 
 FactoryBot.define do
   factory :category do
-    
+    # parent
   end
 end

@@ -13,4 +13,6 @@
 
 class Banner < ApplicationRecord
   scope :all_banner, -> { where(:is_display => true)}
+
+  belongs_to :product
 end

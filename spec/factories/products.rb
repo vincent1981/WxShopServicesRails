@@ -13,6 +13,11 @@
 
 FactoryBot.define do
   factory :product do
-    
+    sequence(:product_name) { FFaker::Product.product_name }
+    description {''}
+    online {true}
+    sequence(:recommend) {FFaker::Boolean.sample}
+    created_at {Time.zone.now}
+    updated_at {Time.zone.now}
   end
 end
