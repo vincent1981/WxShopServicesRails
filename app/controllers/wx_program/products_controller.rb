@@ -16,4 +16,19 @@ class WxProgram::ProductsController < ApplicationController
                   }
                 end
   end
+
+  def product_detail
+    product_id = params[:product_id]
+    
+    product = Product.find_by(:id => product_id)
+    
+    if product.blank?
+      
+    end
+
+    @product = {
+      product: product,
+      product_images: product.product_images
+    }
+  end
 end

@@ -10,13 +10,25 @@ RSpec.describe "WxProgram::Products", type: :request do
       end
     end
 
+    let!(:product_images) {create_list(:product_image, 3, 
+      product: products.first)}
+
     it "show category products" do
       get '/wx_program/products/get_products_by_category_id.json', 
         params:{:category_id => category.id}
 
       res = JSON.parse(response.body).with_indifferent_access
-      byebug
+
       expect(response).to have_http_status(200)
     end
+
+    it "show product detail" do
+      get '/wx_program/products/product_detail.json',
+        params: {:product_id => products.first.id}
+
+      res = JSON.parse(response.body).with_indifferent_access
+      
+      expect(response).to have_http_status(200)
+    end    
   end
 end

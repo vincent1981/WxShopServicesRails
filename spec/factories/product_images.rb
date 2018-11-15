@@ -11,6 +11,7 @@
 
 FactoryBot.define do
   factory :product_image do
-    
+    product
+    sequence(:image_url) { FFaker::Image.url }
   end
 end
