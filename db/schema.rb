@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_135516) do
   end
 
   create_table "user_receiving_addresses", force: :cascade do |t|
-    t.integer "use_id"
+    t.integer "user_id"
     t.integer "province_id"
     t.integer "city_id"
     t.integer "district_id"
@@ -146,24 +146,24 @@ ActiveRecord::Schema.define(version: 2018_10_06_135516) do
     t.index ["postal_code"], name: "index_user_receiving_addresses_on_postal_code"
     t.index ["province_id"], name: "index_user_receiving_addresses_on_province_id"
     t.index ["recipients"], name: "index_user_receiving_addresses_on_recipients"
-    t.index ["use_id"], name: "index_user_receiving_addresses_on_use_id"
+    t.index ["user_id"], name: "index_user_receiving_addresses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "nickname", default: "", null: false
+    t.string "unionid", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nickname"], name: "index_users_on_nickname"
+    t.index ["unionid"], name: "index_users_on_unionid"
   end
 
   create_table "wx_users", force: :cascade do |t|
     t.integer "user_id"
-    t.string "unionid", default: "", null: false
     t.string "access_token", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["access_token"], name: "index_wx_users_on_access_token", unique: true
-    t.index ["unionid"], name: "index_wx_users_on_unionid"
     t.index ["user_id"], name: "index_wx_users_on_user_id"
   end
 

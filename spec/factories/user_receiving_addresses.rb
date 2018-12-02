@@ -3,7 +3,7 @@
 # Table name: user_receiving_addresses
 #
 #  id           :integer          not null, primary key
-#  use_id       :integer
+#  user_id      :integer
 #  province_id  :integer
 #  city_id      :integer
 #  district_id  :integer

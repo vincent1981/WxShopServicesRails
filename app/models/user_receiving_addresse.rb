@@ -3,7 +3,7 @@
 # Table name: user_receiving_addresses
 #
 #  id           :integer          not null, primary key
-#  use_id       :integer
+#  user_id      :integer
 #  province_id  :integer
 #  city_id      :integer
 #  district_id  :integer
@@ -19,4 +19,18 @@
 class UserReceivingAddresse < ApplicationRecord
   belongs_to :user
   
+  belongs_to :province,
+             class_name: 'Area',
+             foreign_key: 'province_id',
+             optional: true
+
+  belongs_to :city,
+             class_name: 'Area',
+             foreign_key: 'city_id',
+             optional: true
+
+  belongs_to :district,
+             class_name: 'Area',
+             foreign_key: 'district_id',
+             optional: true
 end

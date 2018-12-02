@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  nickname   :string           default(""), not null
+#  unionid    :string           default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

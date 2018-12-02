@@ -13,4 +13,14 @@
 #
 
 class Area < ApplicationRecord
+  scope :provinces, -> { where(:category => 'province')}
+
+  CATEGORIES = %w[
+    province
+    city
+    district
+  ].map(&:freeze).freeze
+
+  belongs_to :parent, class_name: 'Area', optional: true
+  has_many :childs, class_name: "Area", foreign_key: "parent_id"
 end

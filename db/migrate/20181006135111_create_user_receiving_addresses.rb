@@ -1,7 +1,7 @@
 class CreateUserReceivingAddresses < ActiveRecord::Migration[5.2]
   def change
     create_table :user_receiving_addresses do |t|
-      t.references :use
+      t.references :user
       t.references :province, index: true
       t.references :city, index: true
       t.references :district, index: true

@@ -80,3 +80,6 @@ bower.json
 node_modules/
 
 >>>>>>> 53a40194929dc2a21e27ceca9f1cf0bd48ae5666
+
+# Ignore application configuration
+/config/application.yml

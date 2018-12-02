@@ -1,0 +1,2 @@
+module WxProgram::AreasHelper
+end
